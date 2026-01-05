@@ -1,0 +1,15 @@
+import AboutUsPage from "./AboutUsPage";
+import ContactUsPage from "./ContactUsPage";
+import DeveloperPage from "./DeveloperPage";
+import HomePage from "./HomePage";
+import ProfilePage from "./ProfilePage";
+import SearchPage from "./SearchPage";
+
+export {
+  HomePage,
+  AboutUsPage,
+  ContactUsPage,
+  DeveloperPage,
+  ProfilePage,
+  SearchPage,
+};
