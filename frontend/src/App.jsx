@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import BottomNavbar from "./components/BottomNavbar";
+import { useSelector } from "react-redux";
+import SearchModal from "./components/SearchModal";
 
 import {
   HomePage,
@@ -13,12 +15,14 @@ import {
 } from "./pages";
 
 function App() {
+  const { isSearchOpen } = useSelector((state) => state.UI);
+
   return (
-    <div className="bg-white dark:bg-gray-900 min-h-screen w-screen">
+    <div className="bg-white dark:bg-gray-900 min-h-screen w-screen border border-none">
       <Router>
         <Navbar />
 
-        <main className="pt-28 pb-20">
+        <main className="pt-0 pb-20">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutUsPage />} />
@@ -32,6 +36,7 @@ function App() {
         </main>
 
         <BottomNavbar />
+        {isSearchOpen && <SearchModal />}
       </Router>
     </div>
   );

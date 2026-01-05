@@ -1,8 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { FiHome, FiInfo, FiPhone, FiCode, FiUser } from "react-icons/fi";
+import {
+  FiHome,
+  FiInfo,
+  FiPhone,
+  FiCode,
+  FiUser,
+  FiSearch,
+} from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { toggleProfileDropdown } from "../redux/slices/UIslice";
+import {
+  toggleProfileDropdown,
+  toggleSearchModal,
+} from "../redux/slices/UIslice";
 
 const BottomNavbar = () => {
   const dispatch = useDispatch();
@@ -19,6 +29,14 @@ const BottomNavbar = () => {
       "
     >
       <NavIcon to="/" icon={<FiHome />} />
+
+      <span className="border border-none flex justify-center items-center">
+        <FiSearch
+          onClick={() => {
+            dispatch(toggleSearchModal());
+          }}
+        />
+      </span>
       <NavIcon to="/about" icon={<FiInfo />} />
       <NavIcon to="/contact" icon={<FiPhone />} />
       <NavIcon to="/developer" icon={<FiCode />} />
@@ -52,8 +70,6 @@ const NavIcon = ({ to, icon }) => (
     `
     }
   >
-    <span className="text-gray-700 dark:text-gray-200">
-      {icon}
-    </span>
+    <span className="text-gray-700 dark:text-gray-200">{icon}</span>
   </NavLink>
 );
