@@ -8,7 +8,7 @@ import {
   FiUser,
   FiSearch,
 } from "react-icons/fi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   toggleProfileDropdown,
   toggleSearchModal,
@@ -16,6 +16,7 @@ import {
 
 const BottomNavbar = () => {
   const dispatch = useDispatch();
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
 
   return (
     <nav
@@ -30,31 +31,41 @@ const BottomNavbar = () => {
     >
       <NavIcon to="/" icon={<FiHome />} />
 
-      <span className="border border-none flex justify-center items-center">
-        <FiSearch
-          onClick={() => {
-            dispatch(toggleSearchModal());
-          }}
-        />
+      <span className="flex items-center">
+        <FiSearch onClick={() => dispatch(toggleSearchModal())} size={22} />
       </span>
+
       <NavIcon to="/about" icon={<FiInfo />} />
       <NavIcon to="/contact" icon={<FiPhone />} />
       <NavIcon to="/developer" icon={<FiCode />} />
 
-      {/* Profile (opens slide panel, not a route) */}
+      {/* PROFILE BUTTON */}
       <button
         onClick={() => dispatch(toggleProfileDropdown())}
-        className="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
+        className="
+          w-9 h-9
+          rounded-full
+          flex items-center justify-center
+          overflow-hidden
+          hover:bg-black/5 dark:hover:bg-white/10
+          transition
+        "
       >
-        <FiUser size={22} />
+        {isAuthenticated && user?.profileImage ? (
+          <img
+            src={user.profileImage}
+            alt={user.name}
+            className="w-full h-full object-cover rounded-full"
+          />
+        ) : (
+          <FiUser size={22} />
+        )}
       </button>
     </nav>
   );
 };
 
 export default BottomNavbar;
-
-/* ---------- NAV ICON ---------- */
 
 const NavIcon = ({ to, icon }) => (
   <NavLink

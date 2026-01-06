@@ -5,6 +5,8 @@ import BottomNavbar from "./components/BottomNavbar";
 import { useSelector } from "react-redux";
 import SearchModal from "./components/SearchModal";
 
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 import {
   HomePage,
   AboutUsPage,
@@ -15,9 +17,18 @@ import {
   AuthPage,
 } from "./pages";
 
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setGoogleUser } from "./redux/slices/AuthSlice";
 function App() {
   const { isSearchOpen } = useSelector((state) => state.UI);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      dispatch(setGoogleUser(JSON.parse(user)));
+    }
+  }, []);
   return (
     <div className="bg-white dark:bg-gray-900 h-screen w-screen border border-none">
       <Router>
@@ -31,7 +42,17 @@ function App() {
             <Route path="/developer" element={<DeveloperPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/search" element={<SearchPage />} />
-            <Route path="/auth" element={<AuthPage />} />
+            <Route
+              path="/auth"
+              element={
+                <GoogleOAuthProvider
+                  clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
+                >
+                  <AuthPage />
+                </GoogleOAuthProvider>
+              }
+            />
+
             <Route path="*" element={<HomePage />} />
           </Routes>
         </main>

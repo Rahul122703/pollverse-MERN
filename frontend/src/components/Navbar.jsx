@@ -13,10 +13,10 @@ import {
 } from "react-icons/fi";
 
 import ProfileSlidePanel from "./ProfileSlidePanel.jsx";
-
 const Navbar = () => {
   const dispatch = useDispatch();
   const { themeMode, isProfileOpen } = useSelector((state) => state.UI);
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -72,14 +72,23 @@ const Navbar = () => {
         <button
           onClick={() => dispatch(toggleProfileDropdown())}
           className="
-            w-10 h-10 rounded-full 
-            flex items-center justify-center
-            bg-white/60 dark:bg-gray-800/60
-            border border-white/40 dark:border-gray-700/50
-            hover:scale-105 transition
-          "
+    w-10 h-10 rounded-full 
+    flex items-center justify-center
+    bg-white/60 dark:bg-gray-800/60
+    border border-white/40 dark:border-gray-700/50
+    overflow-hidden
+    hover:scale-105 transition
+  "
         >
-          <FiUser />
+          {isAuthenticated && user?.profileImage ? (
+            <img
+              src={user.profileImage}
+              alt={user.name}
+              className="w-full h-full object-cover rounded-full"
+            />
+          ) : (
+            <FiUser />
+          )}
         </button>
       </nav>
 
