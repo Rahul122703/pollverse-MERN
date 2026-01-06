@@ -83,8 +83,7 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* SLIDE PANEL */}
-      {isProfileOpen && <ProfileSlidePanel />}
+      <ProfileSlidePanel isVisible={isProfileOpen} />
     </>
   );
 };

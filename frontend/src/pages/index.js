@@ -4,7 +4,7 @@ import DeveloperPage from "./DeveloperPage";
 import HomePage from "./HomePage";
 import ProfilePage from "./ProfilePage";
 import SearchPage from "./SearchPage";
-
+import AuthPage from "./Authpage";
 export {
   HomePage,
   AboutUsPage,
@@ -12,4 +12,5 @@ export {
   DeveloperPage,
   ProfilePage,
   SearchPage,
+  AuthPage,
 };

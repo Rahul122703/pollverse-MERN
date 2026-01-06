@@ -1,26 +1,27 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleThemeMode, closeProfileDropdown } from "../redux/slices/UIslice";
+import { logout } from "../redux/slices/AuthSlice";
+import { useNavigate } from "react-router-dom";
 
 import { FiUser, FiEye, FiMoon, FiSun, FiLogOut, FiX } from "react-icons/fi";
 
-const ProfileSlidePanel = () => {
+const ProfileSlidePanel = ({ isVisible }) => {
   const dispatch = useDispatch();
-  const { themeMode } = useSelector((state) => state.UI);
-
+  const { themeMode,} = useSelector((state) => state.UI);
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   return (
     <div
-      className="
-      fixed top-0 right-0 h-full w-72
+      className={`fixed top-0 right-0 h-full w-72
       bg-white/90 dark:bg-gray-900/90
       backdrop-blur-xl
       border-l dark:border-gray-800
       dark:text-white
       shadow-xl
-      animate-slideIn
+      ${isVisible ? `animate-slideIn` : `animate-slideOut`}
       z-50 *
-      rounded-l-2xl
-    "
+      rounded-l-2xl`}
     >
       <div className="p-4 flex justify-between items-center">
         <span className="font-medium">Profile</span>
@@ -42,7 +43,32 @@ const ProfileSlidePanel = () => {
           Toggle Theme
         </button>
 
-        <Item icon={<FiLogOut />} text="Logout" danger />
+        {isAuthenticated ? (
+          <button
+            onClick={() => {
+              dispatch(logout());
+              dispatch(closeProfileDropdown());
+              navigate("/auth");
+            }}
+            className="flex items-center gap-2 w-full px-3 py-2 rounded-lg
+               text-red-500 hover:bg-red-500/10"
+          >
+            <FiLogOut />
+            Logout
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              dispatch(closeProfileDropdown());
+              navigate("/auth");
+            }}
+            className="flex items-center gap-2 w-full px-3 py-2 rounded-lg
+               hover:bg-black/5 dark:hover:bg-white/10"
+          >
+            <FiUser />
+            Login
+          </button>
+        )}
       </div>
     </div>
   );

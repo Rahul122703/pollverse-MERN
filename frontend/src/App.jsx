@@ -12,17 +12,18 @@ import {
   DeveloperPage,
   ProfilePage,
   SearchPage,
+  AuthPage,
 } from "./pages";
 
 function App() {
   const { isSearchOpen } = useSelector((state) => state.UI);
 
   return (
-    <div className="bg-white dark:bg-gray-900 min-h-screen w-screen border border-none">
+    <div className="bg-white dark:bg-gray-900 h-screen w-screen border border-none">
       <Router>
         <Navbar />
 
-        <main className="pt-0 pb-20">
+        <main className="">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutUsPage />} />
@@ -30,7 +31,7 @@ function App() {
             <Route path="/developer" element={<DeveloperPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/search" element={<SearchPage />} />
-
+            <Route path="/auth" element={<AuthPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </main>
