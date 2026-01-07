@@ -15,6 +15,7 @@ import {
   ProfilePage,
   SearchPage,
   AuthPage,
+  SignUpPage,
 } from "./pages";
 
 import { useEffect } from "react";
@@ -42,6 +43,8 @@ function App() {
             <Route path="/developer" element={<DeveloperPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+
             <Route
               path="/auth"
               element={

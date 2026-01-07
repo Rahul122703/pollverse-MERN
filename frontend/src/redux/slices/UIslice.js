@@ -8,7 +8,8 @@ const getInitialTheme = () => {
 const initialState = {
   themeMode: getInitialTheme(),
   isProfileOpen: false,
-  isSearchOpen: false, // ✅ added
+  isSearchOpen: false,
+  authTab: "SocialLogin",
 };
 
 const UIslice = createSlice({
@@ -20,7 +21,6 @@ const UIslice = createSlice({
       localStorage.setItem("themeMode", state.themeMode);
     },
 
-    // PROFILE PANEL
     toggleProfileDropdown: (state) => {
       state.isProfileOpen = !state.isProfileOpen;
     },
@@ -28,12 +28,14 @@ const UIslice = createSlice({
       state.isProfileOpen = false;
     },
 
-    // SEARCH MODAL
     toggleSearchModal: (state) => {
       state.isSearchOpen = !state.isProfileOpen;
     },
     closeSearchModal: (state) => {
       state.isSearchOpen = false;
+    },
+    setAuthTab: (state, action) => {
+      state.authTab = action.payload;
     },
   },
 });
@@ -44,6 +46,7 @@ export const {
   closeProfileDropdown,
   toggleSearchModal,
   closeSearchModal,
+  setAuthTab,
 } = UIslice.actions;
 
 export default UIslice.reducer;
