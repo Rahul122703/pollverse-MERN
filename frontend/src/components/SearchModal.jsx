@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { closeSearchModal } from "../redux/slices/UIslice";
+import { closeSearchModal } from "../redux/slices/Uislice";
 import { FiX, FiSearch } from "react-icons/fi";
 
 const SearchModal = () => {

@@ -16,6 +16,7 @@ import {
   SearchPage,
   AuthPage,
   SignUpPage,
+  SamplePage,
 } from "./pages";
 
 import { useEffect } from "react";
@@ -28,7 +29,7 @@ function App() {
     const user = localStorage.getItem("user");
     if (user) {
       dispatch(setGoogleUser(JSON.parse(user)));
-    }
+    }// addding comment
   }, []);
   return (
     <div className="bg-white dark:bg-gray-900 h-screen w-screen border border-none">
@@ -44,6 +45,7 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/sample" element={<SamplePage />} />
 
             <Route
               path="/auth"

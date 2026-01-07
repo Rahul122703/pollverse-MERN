@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   toggleProfileDropdown,
   toggleSearchModal,
-} from "../redux/slices/UIslice";
+} from "../redux/slices/Uislice";
 
 const BottomNavbar = () => {
   const dispatch = useDispatch();
