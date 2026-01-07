@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleThemeMode } from "../redux/slices/Uislice";
+import { toggleThemeMode } from "../redux/slices/UIslice";
 
 export default function ThemeToggle() {
   const dispatch = useDispatch();

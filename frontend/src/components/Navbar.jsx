@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { toggleProfileDropdown } from "../redux/slices/Uislice.js";
+import { toggleProfileDropdown } from "../redux/slices/UIslice.js";
 import {
   FiUser,
   FiHome,

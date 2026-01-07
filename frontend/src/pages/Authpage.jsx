@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 import { googleAuth } from "../api";
 import { setGoogleUser } from "../redux/slices/AuthSlice";
-import { setAuthTab } from "../redux/slices/Uislice";
+import { setAuthTab } from "../redux/slices/UIslice";
 import { NormalLogin, SocialLogin } from "../components";
 
 const VIDEO_BG_CDN =

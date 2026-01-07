@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleThemeMode, closeProfileDropdown } from "../redux/slices/Uislice";
+import { toggleThemeMode, closeProfileDropdown } from "../redux/slices/UIslice";
 import { logout } from "../redux/slices/AuthSlice";
 import { useNavigate } from "react-router-dom";
 
