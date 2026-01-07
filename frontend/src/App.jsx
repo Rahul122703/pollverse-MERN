@@ -29,7 +29,7 @@ function App() {
     const user = localStorage.getItem("user");
     if (user) {
       dispatch(setGoogleUser(JSON.parse(user)));
-    }// addding comment
+    } // addding comment
   }, []);
   return (
     <div className="bg-white dark:bg-gray-900 h-screen w-screen border border-none">
@@ -38,7 +38,7 @@ function App() {
 
         <main className="">
           <Routes>
-            <Route path="/" element={<HomekkPage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/developer" element={<DeveloperPage />} />
